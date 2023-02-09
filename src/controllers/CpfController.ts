@@ -13,12 +13,20 @@ ICpfService<ICpf, Cpf>
   }
 
   private async addCpf(req: Request, res: Response): Promise<Response> {
-    const newCpf = await this.service.addCpf(req.body);
+    const cpf = req.body;
+    const newCpf = await this.service.addCpf(cpf);
     return res.status(201).json(newCpf);
+  }
+
+  private async checkCpf(req: Request, res: Response): Promise<Response> {
+    const { cpf } = req.params;
+    const result = await this.service.checkCpf(cpf);
+    return res.status(200).json(result);
   }
 
   public initRoutes(): Router {
     this.router.post('/cpf', (req, res) => this.addCpf(req, res));
+    this.router.get('/cpf/:cpf', (req, res) => this.checkCpf(req, res));
     return this.router;
   }
 }

@@ -16,8 +16,8 @@ abstract class AbstractODM<T> {
     return this.model.create({ ...obj });
   }
 
-  public async findOne(key: string, param: T): Promise<T | null> {
-    return this.model.findOne({ key: param });
+  public async findOne(param: string): Promise<T | null> {
+    return this.model.findOne({ cpf: param });
   }
 
   public async delete(key: string, param: T): Promise<void> {
