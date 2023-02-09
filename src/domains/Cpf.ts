@@ -2,7 +2,7 @@ import ICpf from '../interfaces/ICpf';
 
 export default class Cpf {
   private cpf: string;
-  private createdAt: Date;
+  private createdAt: Date | undefined;
 
   constructor(cpf: ICpf) {
     this.cpf = cpf.cpf;
