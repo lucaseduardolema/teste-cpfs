@@ -26,9 +26,15 @@ ICpfService<ICpf, Cpf>
     return res.status(200).json(result);
   }
 
+  private async findAllCpfs(req: Request, res: Response): Promise<Response> {
+    const result = await this.service.findAllCpfs();
+    return res.status(200).json(result);
+  }
+
   public initRoutes(): Router {
     this.router.post('/cpf', validateCpfBody, (req, res) => this.addCpf(req, res));
-    this.router.get('/cpf/:cpf', validateCpfParam ,(req, res) => this.checkCpf(req, res));
+    this.router.get('/cpf/:cpf', validateCpfParam, (req, res) => this.checkCpf(req, res));
+    this.router.get('/cpf', (req, res) => this.findAllCpfs(req, res));
     return this.router;
   }
 }

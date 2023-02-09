@@ -25,7 +25,8 @@ export default class CpfService implements ICpfService<ICpf, Cpf> {
     throw new Error('Method not implemented.');
   }
 
-  public findAllCpfs(): Promise<Cpf[]> {
-    throw new Error('Method not implemented.');
+  public async findAllCpfs(): Promise<Cpf[]> {
+    const result = await this.odm.find();
+    return result.map((cpf) => new Cpf(cpf));
   }
 }
