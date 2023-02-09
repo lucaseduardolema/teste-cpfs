@@ -21,8 +21,10 @@ export default class CpfService implements ICpfService<ICpf, Cpf> {
     return new Cpf(result);
   }
 
-  public removeCpf(cpfToRemove: string): Promise<void> {
-    throw new Error('Method not implemented.');
+  public async removeCpf(cpfToRemove: string): Promise<void> {
+    const result = await this.odm.findOne(cpfToRemove);
+    if (!result) throw new NotFoundCpfException('CPF is not found');
+    await this.odm.deleteOne(cpfToRemove);
   }
 
   public async findAllCpfs(): Promise<Cpf[]> {

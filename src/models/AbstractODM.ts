@@ -20,8 +20,8 @@ abstract class AbstractODM<T> {
     return this.model.findOne({ cpf: param });
   }
 
-  public async delete(key: string, param: T): Promise<void> {
-    await this.model.findOneAndRemove({ key: param });
+  public async deleteOne(param: string): Promise<void> {
+    await this.model.deleteOne({ cpf: param });
   }
 
   public async find(): Promise<T[]> {

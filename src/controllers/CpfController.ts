@@ -31,10 +31,17 @@ ICpfService<ICpf, Cpf>
     return res.status(200).json(result);
   }
 
+  private async removeCpf(req: Request, res: Response): Promise<Response> {
+    const { cpf } = req.params;
+    await this.service.removeCpf(cpf);
+    return res.status(200).end();
+  }
+
   public initRoutes(): Router {
     this.router.post('/cpf', validateCpfBody, (req, res) => this.addCpf(req, res));
     this.router.get('/cpf/:cpf', validateCpfParam, (req, res) => this.checkCpf(req, res));
     this.router.get('/cpf', (req, res) => this.findAllCpfs(req, res));
+    this.router.delete('/cpf/:cpf', validateCpfParam, (req, res) => this.removeCpf(req, res));
     return this.router;
   }
 }
