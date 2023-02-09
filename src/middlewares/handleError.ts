@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import HttpExeption from '../utils/HttpExeption';
+import HttpExeption from '../errors/HttpExeption';
 
 export default function handleError(
   error: HttpExeption,
