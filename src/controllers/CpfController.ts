@@ -2,6 +2,8 @@ import { Request, Response, Router } from 'express';
 import Cpf from '../domains/Cpf';
 import ICpf from '../interfaces/ICpf';
 import ICpfService from '../interfaces/ICpfService';
+import validateCpfBody from '../middlewares/validateCpfBody';
+import validateCpfParam from '../middlewares/validateCpfParam';
 import CpfService from '../services/CpfService';
 import AbstractController from './AbstractController';
 
@@ -25,8 +27,8 @@ ICpfService<ICpf, Cpf>
   }
 
   public initRoutes(): Router {
-    this.router.post('/cpf', (req, res) => this.addCpf(req, res));
-    this.router.get('/cpf/:cpf', (req, res) => this.checkCpf(req, res));
+    this.router.post('/cpf', validateCpfBody, (req, res) => this.addCpf(req, res));
+    this.router.get('/cpf/:cpf', validateCpfParam ,(req, res) => this.checkCpf(req, res));
     return this.router;
   }
 }
