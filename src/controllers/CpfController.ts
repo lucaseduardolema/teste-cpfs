@@ -38,10 +38,12 @@ ICpfService<ICpf, Cpf>
   }
 
   public initRoutes(): Router {
-    this.router.post('/cpf', validateCpfBody, (req, res) => this.addCpf(req, res));
-    this.router.get('/cpf/:cpf', validateCpfParam, (req, res) => this.checkCpf(req, res));
-    this.router.get('/cpf', (req, res) => this.findAllCpfs(req, res));
-    this.router.delete('/cpf/:cpf', validateCpfParam, (req, res) => this.removeCpf(req, res));
+    this.router.route('/cpf')
+      .post(validateCpfBody, (req, res) => this.addCpf(req, res))
+      .get((req, res) => this.findAllCpfs(req, res));
+    this.router.route('/cpf/:cpf')
+      .get(validateCpfParam, (req, res) => this.checkCpf(req, res))
+      .delete(validateCpfParam, (req, res) => this.removeCpf(req, res));
     return this.router;
   }
 }
