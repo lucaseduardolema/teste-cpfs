@@ -2,11 +2,11 @@
 module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'node',
-  modulePathIgnorePatterns: ["dist"],
-  collectCoverageFrom: ["./src/**"],
+  modulePathIgnorePatterns: ['dist'],
+  collectCoverageFrom: ['./src/**'],
   coverageThreshold: {
     global: {
-      lines: 90
-  }
-}
+      lines: 90,
+    },
+  },
 };

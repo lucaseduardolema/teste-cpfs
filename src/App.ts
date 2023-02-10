@@ -1,7 +1,9 @@
 import express from 'express';
 import 'express-async-errors';
+import swaggerUi from 'swagger-ui-express';
 import CpfController from './controllers/CpfController';
 import handleError from './middlewares/handleError';
+import * as swaggerDocument from '../swagger-output.json';
 
 class App {
   public app: express.Express;
@@ -31,6 +33,7 @@ class App {
   private initRoutes(): void {
     this.app.get('/coffee', (_req, res) => res.status(418).end());
     this.app.use(new CpfController().initRoutes());
+    this.app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
   }
 
   private initMiddlewares(): void {

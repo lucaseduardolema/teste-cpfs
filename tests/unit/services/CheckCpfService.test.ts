@@ -32,10 +32,10 @@ describe('Teste camada Service: checkCpf', function () {
     Sinon.stub(Model, 'findOne').resolves(null);
 
     try {
-      await service.checkCpf(inputCpfMock.cpf)
+      await service.checkCpf(inputCpfMock.cpf);
     } catch (error: any) {
       expect(error instanceof NotFoundCpfException).to.equal(true);
       expect(error.status).to.equal(404);
     }
-  })
+  });
 });

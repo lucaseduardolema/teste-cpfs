@@ -1,0 +1,162 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Test Max Milhas",
+    "description": "Esta documentação é destinada ao test da Max Milhas"
+  },
+  "host": "localhost:3001",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Cpf",
+      "description": "Endpoitns"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/cpf": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Cpf"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "schema": {
+              "$ref": "#/definitions/InvalidCpfExeception"
+            }
+          },
+          "409": {
+            "schema": {
+              "$ref": "#/definitions/ExistsCpfException"
+            }
+          }
+        }
+      }
+    },
+    "/cpf/{cpf}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "cpf",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "schema": {
+              "$ref": "#/definitions/NotFoundCpfException"
+            }
+          },
+          "400": {
+            "schema": {
+              "$ref": "#/definitions/InvalidCpfExeception"
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "cpf",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "schema": {
+              "$ref": "#/definitions/NotFoundCpfException"
+            }
+          },
+          "400": {
+            "schema": {
+              "$ref": "#/definitions/InvalidCpfExeception"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Cpf": {
+      "type": "object",
+      "properties": {
+        "cpf": {
+          "type": "string",
+          "example": "73289612015"
+        }
+      },
+      "required": [
+        "cpf"
+      ]
+    },
+    "ExistsCpfException": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "Cpf already exists"
+        }
+      }
+    },
+    "InvalidCpfExeception": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "CPF is not valid"
+        }
+      }
+    },
+    "NotFoundCpfException": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "CPF is not found"
+        }
+      }
+    }
+  }
+}

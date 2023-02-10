@@ -41,10 +41,10 @@ describe('Teste camada Service: removeCpf', function () {
     Sinon.stub(Model, 'findOne').resolves(null);
 
     try {
-      await service.removeCpf(inputCpfMock.cpf)
+      await service.removeCpf(inputCpfMock.cpf);
     } catch (error: any) {
       expect(error instanceof NotFoundCpfException).to.equal(true);
       expect(error.status).to.equal(404);
     }
-  })
+  });
 });
