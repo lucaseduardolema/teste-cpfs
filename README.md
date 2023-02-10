@@ -43,8 +43,16 @@ Instale as dependências
 
 Inicie o servidor
 
+PS: os serviços utilizaram as portas 3001 e 27017
+
 ```bash
   docker-compose -d --build
+```
+
+Caso deseje rodar fora do docker, tenha instalado o Node v18.14 e MongoDB v6 e rode
+
+```bash
+  npm start
 ```
 ## Rodando os testes
 
