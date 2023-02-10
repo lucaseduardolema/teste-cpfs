@@ -3,9 +3,7 @@ import { cpf } from 'cpf-cnpj-validator';
 import { describe } from 'mocha';
 import { Model } from 'mongoose';
 import Sinon from 'sinon';
-
 import request from 'supertest';
-
 import App from '../../../src/App';
 
 describe('Test camada Controller: addCpf', function () {
