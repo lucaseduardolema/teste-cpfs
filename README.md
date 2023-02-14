@@ -1,5 +1,5 @@
 
-# Teste MaxMilhas
+# Teste Técnico API de Cpfs
 
 Uma API REST conectada a um bando de dados via Docker, onde é possível inserir, deletar, ler um ou vários CPFs, a persistência no banco de dados e verificada seguindo o padão brasileiro de CPFs, garantindo a não inserção de CPFs duplicados e/ou inválidos.
 
@@ -26,13 +26,13 @@ Código escrito seguindo o paradigma de Programação Orientada a Objetos e os p
 Clone o projeto
 
 ```bash
-  git clone git@github.com:lucaseduardolema/teste-max-milhas.git
+  git clone git@github.com:lucaseduardolema/teste-cpfs.git
 ```
 
 Entre no diretório do projeto
 
 ```bash
-  cd teste-max-milhas
+  cd teste-cpfs
 ```
 
 Instale as dependências
